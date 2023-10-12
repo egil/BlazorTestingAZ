@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Playwright Tests
+on:
+  workflow_dispatch: # Allow running the workflow manually from the GitHub UI
+  push:
+    branches:
+      - 'main'       # Run the workflow when pushing to the main branch
+  pull_request:
+    branches:
+      - '*'          # Run the workflow for all pull requests
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref == 'refs/heads/main' && github.run_id || github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+  TestResultsDirectory: ${{ github.workspace }}/TestResults
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}  
+
+jobs:
+  test:    
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+    - run: dotnet tool install --global Microsoft.Playwright.CLI --version 1.2.3
+    - run: dotnet build -c Release
+    - run: dotnet dev-certs https --export-path ./NdcDemo.E2ETests/bin/Release/net8.0/localhost-dev.pfx --password "Pa55w0rd!"
+    - run: playwright install chromium
+    - run: dotnet test -c Release --no-build --logger trx --results-directory "${{ env.TestResultsDirectory }}" --collect:"XPlat Code Coverage" --blame-hang --blame-hang-timeout 5min
+
+    - name: upload traces
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-traces
+        if-no-files-found: ignore
+        retention-days: 3
+        path: ./NdcDemo.E2ETests/bin/Release/net8.0/*.trace.zip
+
+    - name: update test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        if-no-files-found: error
+        retention-days: 3
+        path: ${{ env.TestResultsDirectory }}/**/*
+        
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: github.actor != 'dependabot[bot]' && (success() || failure()) && github.repository_owner == 'egil'
+      with:
+        name: test-results
+        path: ${{ env.TestResultsDirectory }}/**/*.trx
+        path-replace-backslashes: 'true'
+        reporter: dotnet-trx
