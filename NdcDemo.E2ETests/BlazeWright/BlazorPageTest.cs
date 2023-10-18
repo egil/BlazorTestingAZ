@@ -23,7 +23,7 @@ public class BlazorPageTest<TProgram> : BrowserTest
         }
     }
 
-    public virtual BlazorApplicationFactory<TProgram> CreateHostFactory() 
+    public virtual BlazorApplicationFactory<TProgram> CreateHostFactory()
         => new BlazorApplicationFactory<TProgram>();
 
     public virtual BrowserNewContextOptions ContextOptions() => null!;
@@ -42,11 +42,12 @@ public class BlazorPageTest<TProgram> : BrowserTest
     [TearDown]
     public async Task HostTearDown()
     {
-        if(host is {} currentHost)
+        if (host is { } currentHost)
         {
             host = null;
+            await Page.GotoAsync("about:blank");
+            await Context.DisposeAsync();
             await currentHost.DisposeAsync();
-            currentHost.Dispose();
-        }        
+        }
     }
 }
