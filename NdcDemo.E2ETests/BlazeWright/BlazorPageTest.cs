@@ -4,8 +4,6 @@ using Microsoft.Playwright.NUnit;
 
 namespace BlazeWright;
 
-[Parallelizable(ParallelScope.Self)]
-[TestFixture]
 public class BlazorPageTest<TProgram> : BrowserTest
     where TProgram : class
 {
@@ -51,9 +49,9 @@ public class BlazorPageTest<TProgram> : BrowserTest
 
             // Navigate to about:blank to ensure any SignalR
             // connections are dropped.
-            await Page.GotoAsync("about:blank");
-            await Context.DisposeAsync();
-            await currentHost.DisposeAsync();
+            //await Page.GotoAsync("about:blank");
+            await Context.DisposeAsync().ConfigureAwait(false);
+            await currentHost.DisposeAsync().ConfigureAwait(false);
         }
     }
 }

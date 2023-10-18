@@ -1,0 +1,42 @@
+﻿@code {
+    private string AlertKindCss
+        => Kind != AlertKind.None
+            ? $"alert-{Kind.ToString().ToLowerInvariant()}"
+            : "";
+
+    private string AlertDismissibleCss
+    {
+        get
+        {
+            if (!Dismissible)
+                return "";
+
+            return Dismissed
+                ? "alert-dismissible fade"
+                : "alert-dismissible fade show";
+        }
+    }
+
+    public bool Dismissed { get; private set; }
+
+    [Parameter, EditorRequired]
+    public required RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public AlertKind Kind { get; set; } = AlertKind.None;
+
+    [Parameter]
+    public bool Dismissible { get; set; }
+}
+<div class="alert @AlertKindCss @AlertDismissibleCss" role="alert">
+    
+    @ChildContent
+
+    @if (Dismissible)
+    {
+        <button type="button"
+                class="btn-close"
+                aria-label="Close"
+                @onclick=@(() => Dismissed = true)></button>
+    }
+</div>

@@ -1,4 +1,4 @@
-﻿namespace NdcDemo.E2ETests;
+﻿namespace NdcDemo.E2ETests.End2EndTesting;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]
@@ -9,7 +9,7 @@ internal class WeatherPageTest : BlazorPageTest<Program>
     {
         // Arrange
         await Page.GotoAsync("weather");
-        
+
         // Act
         await Page.WaitForSelectorAsync("h1 >> text=Weather");
         await Page.WaitForSelectorAsync("table>tbody>tr");

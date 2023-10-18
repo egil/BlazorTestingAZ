@@ -1,0 +1,25 @@
+@attribute [TestFixture]
+@inherits BunitTestContext
+@code {
+
+    [Test]
+    public void Counter_has_expected_markup()
+    {
+        var cut = Render(@<Counter />);
+
+        cut.MarkupMatches(
+            @<text>
+                <h1>Counter</h1>
+                <p role="status">Current count: 0</p>
+                <button class="btn btn-primary">Click me</button>
+            </text>);
+    }
+
+    [Test]
+    public async Task Counter_has_expected_markup_external_snapshot()
+    {
+        var cut = Render(@<Counter />);
+
+        await Verify(cut);
+    }
+}

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using VerifyTests;
 using VerifyTests.Playwright;
 
-namespace NdcDemo.E2ETests.SnapshotTesting;
+namespace NdcDemo.E2ETests.End2EndTesting.SnapshotTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

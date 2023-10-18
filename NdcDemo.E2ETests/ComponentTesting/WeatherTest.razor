@@ -1,0 +1,16 @@
+@attribute [TestFixture]
+@inherits BunitTestContext
+@code {
+
+    [Test]
+    public void WeatherForecastTable_LoadsAndDisplaysData_OnPageInitialization()
+    {
+        Services.AddSingleton<WeatherForecastRepo>(
+            new StubWeatherForecastRepo(forecastsToReturn: 2));
+        var cut = Render(@<Weather />);
+
+        var rows = cut.WaitForElements("tbody > tr");
+
+        Assert.That(rows.Count, Is.EqualTo(2));
+    }
+}

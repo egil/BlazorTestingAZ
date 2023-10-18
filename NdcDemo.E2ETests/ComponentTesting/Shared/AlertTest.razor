@@ -1,0 +1,48 @@
+@attribute [TestFixture]
+@inherits BunitTestContext
+@code {
+
+    [TestCase]
+    public void Alert_dismiss()
+    {
+        // Arrange
+        var cut = Render(@<Alert Dismissible>Ndc Port!</Alert>);
+
+        // Act
+        cut.Find("[aria-label=Close]").Click();
+
+        // Assert
+        Alert alert = cut.FindComponent<Alert>().Instance;
+        Assert.True(alert.Dismissed);
+    }
+
+    [TestCase(AlertKind.None, true)]
+    [TestCase(AlertKind.Primary, true)]
+    [TestCase(AlertKind.Secondary, true)]
+    [TestCase(AlertKind.Success, true)]
+    [TestCase(AlertKind.Danger, true)]
+    [TestCase(AlertKind.Warning, true)]
+    [TestCase(AlertKind.Info, true)]
+    [TestCase(AlertKind.Light, true)]
+    [TestCase(AlertKind.Dark, true)]
+    [TestCase(AlertKind.None, false)]
+    [TestCase(AlertKind.Primary, false)]
+    [TestCase(AlertKind.Secondary, false)]
+    [TestCase(AlertKind.Success, false)]
+    [TestCase(AlertKind.Danger, false)]
+    [TestCase(AlertKind.Warning, false)]
+    [TestCase(AlertKind.Info, false)]
+    [TestCase(AlertKind.Light, false)]
+    [TestCase(AlertKind.Dark, false)]
+    public Task Alert_markup(AlertKind kind, bool dismissible)
+    {
+        // Arrange & act
+        var cut = Render(
+            @<Alert Kind="kind" Dismissible="dismissible">
+                <p>CONTENT</p>
+            </Alert>);
+        
+        // Assert
+        return Verify(cut);
+    }
+}

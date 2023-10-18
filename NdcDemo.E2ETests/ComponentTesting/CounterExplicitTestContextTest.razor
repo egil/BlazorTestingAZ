@@ -1,0 +1,17 @@
+@using NdcDemo.Components.Pages
+@attribute [TestFixture]
+@code {
+
+    [Test]
+    public void Count_Increments_WhenButtonIsClicked()
+    {
+        using var ctx = new Bunit.TestContext();
+        var cut = ctx.Render(@<Counter />);
+
+        cut.Find("button").Click();
+
+        var statusText = cut.Find("[role=status]").TextContent;
+        Assert.That(statusText, Is.EqualTo("Current count: 1"));
+    }
+
+}

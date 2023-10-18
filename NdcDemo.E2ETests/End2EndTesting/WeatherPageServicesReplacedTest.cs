@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using NdcDemo.Data;
 
-namespace NdcDemo.E2ETests;
+namespace NdcDemo.E2ETests.End2EndTesting;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]
@@ -12,8 +12,11 @@ internal class WeatherPageServicesReplacedTest : BlazorPageTest<Program>
     {
         builder.ConfigureServices(services =>
         {
-            services.AddScoped<WeatherForecastRepo, DummyWeatherForecastRepo>();
+            services.AddScoped<WeatherForecastRepo>(
+                _ => new StubWeatherForecastRepo(forecastsToReturn: 1));
         });
+
+        // Set up dev containers, spin up databases, etc.
     }
 
     [Test]
@@ -29,19 +32,5 @@ internal class WeatherPageServicesReplacedTest : BlazorPageTest<Program>
 
         // Assert
         Assert.That(rows, Is.EqualTo(1));
-    }
-}
-
-internal class DummyWeatherForecastRepo : WeatherForecastRepo
-{
-    public override Task<WeatherForecast[]> GetForecasts()
-    {
-        WeatherForecast[] result = [new()
-        {
-            Date = DateOnly.FromDateTime(DateTime.UtcNow),
-            Summary = "Heavy rain",
-            TemperatureC = 20
-        }];
-        return Task.FromResult(result);
     }
 }

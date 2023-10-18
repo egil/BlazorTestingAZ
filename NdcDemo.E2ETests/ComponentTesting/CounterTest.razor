@@ -1,0 +1,15 @@
+@attribute [TestFixture]
+@inherits BunitTestContext
+@code {
+
+    [Test]
+    public void Count_Increments_WhenButtonIsClicked()
+    {
+        var cut = Render(@<Counter />);
+
+        cut.Find("button").Click();
+
+        var statusText = cut.Find("[role=status]").TextContent;
+        Assert.That(statusText, Is.EqualTo("Current count: 1"));
+    }
+}
