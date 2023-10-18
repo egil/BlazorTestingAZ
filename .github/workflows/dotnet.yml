@@ -47,6 +47,15 @@ jobs:
         retention-days: 3
         path: ./NdcDemo.Tests/bin/Release/net8.0/*.trace.zip
 
+    - name: upload snapshot files
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: snapshots
+        if-no-files-found: ignore
+        retention-days: 3
+        path: ./NdcDemo.Tests/**/*.received.*
+
     - name: update test results
       uses: actions/upload-artifact@v3
       if: always()
