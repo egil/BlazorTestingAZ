@@ -29,4 +29,5 @@ internal class CounterPageTest : BlazorPageTest<Program>
                 });
     }
 
+    // Run diffenginetray to manage diffs
 }
