@@ -5,7 +5,7 @@ namespace NdcDemo.E2ETests;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
-internal class CounterPageTestManual
+internal class CounterPageManualTest
 {
     [Test]
     public async Task Count_Increments_WhenButtonIsClicked()
