@@ -1,7 +1,7 @@
 ﻿using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 
-namespace NdcDemo.E2ETestsNunit.Playwright.Blazor;
+namespace BlazeWright;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
@@ -23,7 +23,8 @@ public class BlazorPageTest<TProgram> : BrowserTest
         }
     }
 
-    public virtual BlazorApplicationFactory<TProgram> CreateHostFactory() => new BlazorApplicationFactory<TProgram>();
+    public virtual BlazorApplicationFactory<TProgram> CreateHostFactory() 
+        => new BlazorApplicationFactory<TProgram>();
 
     public virtual BrowserNewContextOptions ContextOptions() => null!;
 

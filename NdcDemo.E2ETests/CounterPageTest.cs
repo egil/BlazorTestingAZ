@@ -1,9 +1,6 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Playwright;
-using NdcDemo.E2ETestsNunit.Playwright.Blazor;
-using System;
 
-namespace NdcDemo.E2ETestsNunit;
+namespace NdcDemo.E2ETests;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

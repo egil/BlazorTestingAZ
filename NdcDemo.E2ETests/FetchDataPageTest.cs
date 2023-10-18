@@ -1,6 +1,4 @@
-﻿using NdcDemo.E2ETestsNunit.Playwright.Blazor;
-
-namespace NdcDemo.E2ETestsNunit;
+﻿namespace NdcDemo.E2ETests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]

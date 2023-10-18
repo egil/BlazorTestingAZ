@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography.X509Certificates;
 
-namespace NdcDemo.E2ETestsNunit.Playwright.Blazor;
+namespace BlazeWright;
 
-public class BlazorApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
+public class BlazorApplicationFactory<TProgram> 
+    : WebApplicationFactory<TProgram> where TProgram : class
 {
     private IHost? host;
 
@@ -25,6 +26,7 @@ public class BlazorApplicationFactory<TProgram> : WebApplicationFactory<TProgram
     {
         base.ConfigureWebHost(builder);
 
+        // Used on CI - imports an exported dotnet dev server certificate
         if (File.Exists("localhost-dev.pfx"))
         {
             builder.ConfigureKestrel(
@@ -38,7 +40,7 @@ public class BlazorApplicationFactory<TProgram> : WebApplicationFactory<TProgram
 
     protected override IHost CreateHost(IHostBuilder builder)
     {
-        // Create the host for TestServer now before we modify the builder to use Kestrel instead.    
+        // Create the host for TestServer now before we modify the builder to use Kestrel instead.
         var testHost = builder.Build();
 
         // Modify the host builder to use Kestrel instead of TestServer so we can listen on a real address.    
@@ -78,9 +80,9 @@ public class BlazorApplicationFactory<TProgram> : WebApplicationFactory<TProgram
         }
     }
 
-    public override ValueTask DisposeAsync()
+    public override async ValueTask DisposeAsync()
     {
+        await base.DisposeAsync();
         host?.Dispose();
-        return base.DisposeAsync();
     }
 }
