@@ -1,4 +1,5 @@
-﻿using Microsoft.Playwright;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 
 namespace BlazeWright;
@@ -18,15 +19,17 @@ public class BlazorPageTest<TProgram> : BrowserTest
     {
         get
         {
-            host ??= CreateHostFactory() ?? new BlazorApplicationFactory<TProgram>();
+            host ??= CreateHostFactory() ?? new BlazorApplicationFactory<TProgram>(ConfigureWebHost);
             return host;
         }
     }
 
     public virtual BlazorApplicationFactory<TProgram> CreateHostFactory()
-        => new BlazorApplicationFactory<TProgram>();
+        => new BlazorApplicationFactory<TProgram>(ConfigureWebHost);
 
     public virtual BrowserNewContextOptions ContextOptions() => null!;
+
+    protected virtual void ConfigureWebHost(IWebHostBuilder builder) { }
 
     [SetUp]
     public async Task PageSetup()

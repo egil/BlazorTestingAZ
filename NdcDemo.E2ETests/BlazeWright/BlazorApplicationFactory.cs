@@ -5,12 +5,14 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazeWright;
 
 public class BlazorApplicationFactory<TProgram> 
     : WebApplicationFactory<TProgram> where TProgram : class
 {
+    private readonly Action<IWebHostBuilder>? configureWebHost;
     private IHost? host;
 
     public string ServerAddress
@@ -22,9 +24,19 @@ public class BlazorApplicationFactory<TProgram>
         }
     }
 
+    public BlazorApplicationFactory()
+    {        
+    }
+
+    public BlazorApplicationFactory(Action<IWebHostBuilder> configureWebHost)
+    {
+        this.configureWebHost = configureWebHost;
+    }
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         base.ConfigureWebHost(builder);
+        configureWebHost?.Invoke(builder);
 
         // Used on CI - imports an exported dotnet dev server certificate
         if (File.Exists("localhost-dev.pfx"))

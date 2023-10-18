@@ -1,6 +1,9 @@
 using NdcDemo.Components;
+using NdcDemo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<WeatherForecastRepo>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
