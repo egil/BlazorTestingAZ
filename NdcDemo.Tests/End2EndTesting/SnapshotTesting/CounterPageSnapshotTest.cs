@@ -1,14 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VerifyTests;
-using VerifyTests.Playwright;
+﻿using Microsoft.Playwright;
 
-namespace NdcDemo.E2ETests.End2EndTesting.SnapshotTesting;
+namespace NdcDemo.Tests.End2EndTesting.SnapshotTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

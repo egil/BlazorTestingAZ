@@ -29,14 +29,13 @@ jobs:
     - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
-    - name: dotnet dev-cert
+    - run: dotnet tool install --global Microsoft.Playwright.CLI
+    - run: dotnet build -c Release
+    - run: playwright install chromium
+    - name: dotnet dev-cert trust
       run: |
         dotnet dev-certs https --clean
         dotnet dev-certs https --trust
-    - run: dotnet tool install --global Microsoft.Playwright.CLI --version 1.2.3
-    - run: dotnet build -c Release
-    # - run: dotnet dev-certs https --export-path ./NdcDemo.E2ETests/bin/Release/net8.0/localhost-dev.pfx --password "Pa55w0rd!"
-    - run: playwright install chromium
     - run: dotnet test -c Release --no-build --logger trx --results-directory "${{ env.TestResultsDirectory }}" --collect:"XPlat Code Coverage" --blame-hang --blame-hang-timeout 5min
 
     - name: upload traces
@@ -46,7 +45,7 @@ jobs:
         name: playwright-traces
         if-no-files-found: ignore
         retention-days: 3
-        path: ./NdcDemo.E2ETests/bin/Release/net8.0/*.trace.zip
+        path: ./NdcDemo.Tests/bin/Release/net8.0/*.trace.zip
 
     - name: update test results
       uses: actions/upload-artifact@v3

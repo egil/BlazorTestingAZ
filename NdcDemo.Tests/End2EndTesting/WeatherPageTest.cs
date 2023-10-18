@@ -1,4 +1,4 @@
-﻿namespace NdcDemo.E2ETests.End2EndTesting;
+﻿namespace NdcDemo.Tests.End2EndTesting;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]

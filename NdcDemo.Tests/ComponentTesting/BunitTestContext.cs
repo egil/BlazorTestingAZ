@@ -1,7 +1,4 @@
-﻿namespace NdcDemo.E2ETests.ComponentTesting;
-
-using Bunit;
-using NUnit.Framework;
+﻿namespace NdcDemo.Tests.ComponentTesting;
 
 public abstract class BunitTestContext : TestContextWrapper
 {

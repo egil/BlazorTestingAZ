@@ -6,8 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NdcDemo", "NdcDemo\NdcDemo.csproj", "{4693C933-1DA9-4FE7-A02B-D5359E83C931}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFEACF13-550F-4B84-A8F3-E2360C55A7BD}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NdcDemo.E2ETests", "NdcDemo.E2ETests\NdcDemo.E2ETests.csproj", "{6BA18D64-8477-414B-9577-7EA44CF7772A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NdcDemo.Tests", "NdcDemo.Tests\NdcDemo.Tests.csproj", "{6C304B08-6A8E-4F14-9AA7-9CF52AF77E16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +22,10 @@ Global
 		{4693C933-1DA9-4FE7-A02B-D5359E83C931}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4693C933-1DA9-4FE7-A02B-D5359E83C931}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4693C933-1DA9-4FE7-A02B-D5359E83C931}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BA18D64-8477-414B-9577-7EA44CF7772A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BA18D64-8477-414B-9577-7EA44CF7772A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BA18D64-8477-414B-9577-7EA44CF7772A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BA18D64-8477-414B-9577-7EA44CF7772A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C304B08-6A8E-4F14-9AA7-9CF52AF77E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C304B08-6A8E-4F14-9AA7-9CF52AF77E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C304B08-6A8E-4F14-9AA7-9CF52AF77E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C304B08-6A8E-4F14-9AA7-9CF52AF77E16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

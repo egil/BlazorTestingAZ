@@ -1,7 +1,7 @@
 using Microsoft.Playwright;
 using static Microsoft.Playwright.Assertions;
 
-namespace NdcDemo.E2ETests.End2EndTesting;
+namespace NdcDemo.Tests.End2EndTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

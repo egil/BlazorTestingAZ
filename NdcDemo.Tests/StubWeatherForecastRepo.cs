@@ -1,12 +1,12 @@
 ﻿using NdcDemo.Data;
 
-namespace NdcDemo.E2ETests;
+namespace NdcDemo.Tests;
 
 internal class StubWeatherForecastRepo : WeatherForecastRepo
 {
     private readonly int forecastsToReturn;
 
-    public StubWeatherForecastRepo(int forecastsToReturn) 
+    public StubWeatherForecastRepo(int forecastsToReturn)
         => this.forecastsToReturn = forecastsToReturn;
 
     public override Task<WeatherForecast[]> GetForecasts()

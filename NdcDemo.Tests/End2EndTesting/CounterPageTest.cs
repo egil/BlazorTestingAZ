@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Playwright;
-
-namespace NdcDemo.E2ETests.End2EndTesting;
+namespace NdcDemo.Tests.End2EndTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace NdcDemo.E2ETests;
+namespace NdcDemo.Tests;
 
 public static class VerifyInit
 {
