@@ -12,13 +12,15 @@ internal class CounterPageTest : BlazorPageTest<Program>
         // Arrange
         await Page.GotoPreRenderedAsync("counter");
 
-        await Verify(Page)
-            .PageScreenshotOptions(
-                new()
-                {
-                    Quality = 50,
-                    Type = ScreenshotType.Jpeg
-                });
+        // Verify page content only
+        await Verify(await Page.ContentAsync(), "html");
+
+        // Verify page and create screenshot
+        // await Verify(Page).PageScreenshotOptions(new()
+        // {
+        //     Quality = 50,
+        //     Type = ScreenshotType.Jpeg
+        // });
     }
 
     // Run diffenginetray to manage diffs
