@@ -45,6 +45,9 @@ public class BlazorPageTest<TProgram> : BrowserTest
         if (host is { } currentHost)
         {
             host = null;
+
+            // Navigate to about:blank to ensure any SignalR
+            // connections are dropped.
             await Page.GotoAsync("about:blank");
             await Context.DisposeAsync();
             await currentHost.DisposeAsync();
