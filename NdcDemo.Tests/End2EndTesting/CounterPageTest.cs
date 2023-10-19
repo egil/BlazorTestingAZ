@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 namespace NdcDemo.Tests.End2EndTesting;
 
 [Parallelizable(ParallelScope.Self)]
@@ -16,6 +18,7 @@ internal class CounterPageTest : BlazorPageTest<Program>
             .ClickAsync();
 
         // Assert
-        await Expect(Page.GetByRole(AriaRole.Status)).ToHaveTextAsync("Current count: 1");
+        ILocator status = Page.GetByRole(AriaRole.Status);
+        await Expect(status).ToHaveTextAsync("Current count: 1");
     }
 }

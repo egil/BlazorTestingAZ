@@ -4,7 +4,7 @@ namespace NdcDemo.Tests.End2EndTesting.SnapshotTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
-internal class CounterPageTest : BlazorPageTest<Program>
+internal class CounterPageSnapshotTest : BlazorPageTest<Program>
 {
     [Test]
     public async Task Counter_page()
@@ -13,7 +13,8 @@ internal class CounterPageTest : BlazorPageTest<Program>
         await Page.GotoPreRenderedAsync("counter");
 
         // Verify page content only
-        await Verify(await Page.ContentAsync(), "html");
+        string html = await Page.ContentAsync();
+        await Verify(html, "html");
 
         // Verify page and create screenshot
         // await Verify(Page).PageScreenshotOptions(new()

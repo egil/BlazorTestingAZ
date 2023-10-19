@@ -36,15 +36,7 @@ public class BlazorApplicationFactory<TProgram>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         base.ConfigureWebHost(builder);
-        configureWebHost?.Invoke(builder);
-
-        // Used on CI - imports an exported dotnet dev server certificate
-        if (File.Exists("localhost-dev.pfx"))
-        {
-            builder.ConfigureKestrel(
-                serverOptions => serverOptions.ConfigureHttpsDefaults(
-                    httpsOptions => httpsOptions.ServerCertificate = new X509Certificate2("localhost-dev.pfx", "Pa55w0rd!")));
-        }
+        configureWebHost?.Invoke(builder);        
 
         // Setting port to 0 means that Kestrel will pick any free a port.
         builder.UseUrls("https://127.0.0.1:0");

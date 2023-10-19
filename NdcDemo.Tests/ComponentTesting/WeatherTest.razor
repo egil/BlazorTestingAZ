@@ -5,12 +5,16 @@
     [Test]
     public void WeatherForecastTable_LoadsAndDisplaysData_OnPageInitialization()
     {
+        // Arrange
         Services.AddSingleton<WeatherForecastRepo>(
             new StubWeatherForecastRepo(forecastsToReturn: 2));
+
         var cut = Render(@<Weather />);
 
+        // Act
         var rows = cut.WaitForElements("tbody > tr");
 
+        // Assert
         Assert.That(rows.Count, Is.EqualTo(2));
     }
 }

@@ -21,9 +21,9 @@ internal class CounterPageManualTest
         };
         IBrowserContext context = await browser.NewContextAsync(contextOptions);
         IPage page = await context.NewPageAsync();
+        await page.GotoAsync("counter", new() { WaitUntil = WaitUntilState.NetworkIdle });
 
         // Act
-        await page.GotoAsync("counter", new() { WaitUntil = WaitUntilState.NetworkIdle });
         await page
             .GetByRole(AriaRole.Button, new PageGetByRoleOptions() { Name = "Click me" })
             .ClickAsync();

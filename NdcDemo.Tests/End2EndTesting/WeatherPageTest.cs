@@ -13,9 +13,9 @@ internal class WeatherPageTest : BlazorPageTest<Program>
         // Act
         await Page.WaitForSelectorAsync("h1 >> text=Weather");
         await Page.WaitForSelectorAsync("table>tbody>tr");
-        var rows = await Page.Locator("p+table>tbody>tr").CountAsync();
 
         // Assert
+        var rows = await Page.Locator("p+table>tbody>tr").CountAsync();
         Assert.That(rows, Is.EqualTo(5));
     }
 }

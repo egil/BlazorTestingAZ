@@ -6,13 +6,19 @@
     public void Alert_dismiss()
     {
         // Arrange
-        var cut = Render(@<Alert Dismissible>Ndc Port!</Alert>);
+        var cut = Render(
+            @<Alert 
+                Kind="AlertKind.Primary" 
+                Dismissible="true">
+                <p>Ndc Port!</p>
+            </Alert>);
 
         // Act
         cut.Find("[aria-label=Close]").Click();
 
         // Assert
-        Alert alert = cut.FindComponent<Alert>().Instance;
+        IRenderedComponent<Alert> component = cut.FindComponent<Alert>();
+        Alert alert = component.Instance;
         Assert.True(alert.Dismissed);
     }
 
