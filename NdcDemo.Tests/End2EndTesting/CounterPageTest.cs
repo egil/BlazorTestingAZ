@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace NdcDemo.Tests.End2EndTesting;
 
 [Parallelizable(ParallelScope.Self)]

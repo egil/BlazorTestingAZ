@@ -1,5 +1,4 @@
-﻿using Microsoft.Playwright;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace BlazeWright;
 

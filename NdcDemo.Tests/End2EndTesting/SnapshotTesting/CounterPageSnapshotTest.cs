@@ -1,6 +1,4 @@
-﻿using Microsoft.Playwright;
-
-namespace NdcDemo.Tests.End2EndTesting.SnapshotTesting;
+﻿namespace NdcDemo.Tests.End2EndTesting.SnapshotTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

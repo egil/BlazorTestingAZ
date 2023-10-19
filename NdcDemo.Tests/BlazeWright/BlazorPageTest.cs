@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 
 namespace BlazeWright;
