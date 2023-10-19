@@ -11,6 +11,7 @@ internal class CounterPageManualTest
     {
         // Arrange
         using BlazorApplicationFactory<Program> host = new BlazorApplicationFactory<Program>();
+
         using IPlaywright playwright = await Playwright.CreateAsync();
         await using IBrowser? browser = await playwright.Chromium.LaunchAsync();
         BrowserNewContextOptions contextOptions = new BrowserNewContextOptions
@@ -18,8 +19,10 @@ internal class CounterPageManualTest
             BaseURL = host.ServerAddress,
             IgnoreHTTPSErrors = true,
         };
+        
         IBrowserContext context = await browser.NewContextAsync(contextOptions);
         IPage page = await context.NewPageAsync();
+
         await page.GotoAsync("counter", new() { WaitUntil = WaitUntilState.NetworkIdle });
 
         // Act

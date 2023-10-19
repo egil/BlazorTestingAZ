@@ -12,7 +12,7 @@ internal class WeatherPageServicesReplacedTest : BlazorPageTest<Program>
     {
         builder.ConfigureServices(services =>
         {
-            // Here be dragons!
+            // Here be dragons! Hint - "auto"
             services.AddScoped<WeatherForecastRepo>(
                 _ => new StubWeatherForecastRepo(forecastsToReturn: 1));
         });
