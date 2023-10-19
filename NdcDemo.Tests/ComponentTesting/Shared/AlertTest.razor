@@ -2,7 +2,7 @@
 @inherits BunitTestContext
 @code {
 
-    [TestCase]
+    [Test]
     public void Alert_dismiss()
     {
         // Arrange
@@ -20,6 +20,27 @@
         IRenderedComponent<Alert> component = cut.FindComponent<Alert>();
         Alert alert = component.Instance;
         Assert.True(alert.Dismissed);
+    }
+
+    // Markup should match this: 
+    // https://getbootstrap.com/docs/5.3/components/alerts/#dismissing
+    [Test]
+    public void Alert_correct_markup_with_dismissal()
+    {
+        // Arrange
+        var cut = Render(
+            @<Alert 
+                Kind="AlertKind.Warning" 
+                Dismissible="true">
+                <p>Ndc Port!</p>
+            </Alert>);
+
+        // Assert
+        cut.MarkupMatches(
+            @<div class="alert-dismissible fade show alert alert-warning" role="alert">
+                <p>Ndc Port!</p>
+                <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>);
     }
 
     [TestCase(AlertKind.None, true)]

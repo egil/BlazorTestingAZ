@@ -22,7 +22,8 @@ internal class CounterPageTraceTest : BlazorPageTest<Program>
             .ClickAsync();
 
         // Assert
-        await Expect(Page.GetByRole(AriaRole.Status)).ToHaveTextAsync("Current count: 1");
+        ILocator status = Page.GetByRole(AriaRole.Status);
+        await Expect(status).ToHaveTextAsync("Current count: 1");
 
         await Context.Tracing.StopAsync(new()
         {

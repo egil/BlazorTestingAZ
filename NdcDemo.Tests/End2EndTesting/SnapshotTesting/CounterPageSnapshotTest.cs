@@ -17,11 +17,11 @@ internal class CounterPageSnapshotTest : BlazorPageTest<Program>
         await Verify(html, "html");
 
         // Verify page and create screenshot
-        // await Verify(Page).PageScreenshotOptions(new()
-        // {
-        //     Quality = 50,
-        //     Type = ScreenshotType.Jpeg
-        // });
+        //await Verify(Page).PageScreenshotOptions(new()
+        //{
+        //    Quality = 50,
+        //    Type = ScreenshotType.Jpeg
+        //});
     }
 
     // Run diffenginetray to manage diffs
