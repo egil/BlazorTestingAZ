@@ -10,7 +10,7 @@
             @<Alert 
                 Kind="AlertKind.Primary" 
                 Dismissible="true">
-                <p>Ndc Port!</p>
+                <p>Ndc Porto!</p>
             </Alert>);
 
         // Act
@@ -32,13 +32,13 @@
             @<Alert 
                 Kind="AlertKind.Warning" 
                 Dismissible="true">
-                <p>Ndc Port!</p>
+                <p>Ndc Porto!</p>
             </Alert>);
 
         // Assert
         cut.MarkupMatches(
-            @<div class="alert-dismissible fade show alert alert-warning" role="alert">
-                <p>Ndc Port!</p>
+            @<div class="fade show alert alert-warning alert-dismissible" role="alert">
+                <p>Ndc Porto!</p>
                 <button type="button" class="btn-close" aria-label="Close"></button>
             </div>);
     }
