@@ -1,6 +1,6 @@
 using static Microsoft.Playwright.Assertions;
 
-namespace NdcDemo.Tests.End2EndTesting;
+namespace BlazorTestingAZ.Tests.End2EndTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

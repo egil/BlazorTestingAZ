@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFEACF13-550F-4B84-A8F3-E2360C55A7BD}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTestingAZ", "BlazorTestingAZ\BlazorTestingAZ.csproj", "{C4D69ABE-E0A6-46A2-97FB-866E1727506B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTestingAZ.Tests", "BlazorTestingAZ.Tests\BlazorTestingAZ.Tests.csproj", "{81574864-80C4-492B-B04C-4EFB9F996CE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4D69ABE-E0A6-46A2-97FB-866E1727506B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D69ABE-E0A6-46A2-97FB-866E1727506B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D69ABE-E0A6-46A2-97FB-866E1727506B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D69ABE-E0A6-46A2-97FB-866E1727506B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81574864-80C4-492B-B04C-4EFB9F996CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81574864-80C4-492B-B04C-4EFB9F996CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81574864-80C4-492B-B04C-4EFB9F996CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81574864-80C4-492B-B04C-4EFB9F996CE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {523BE179-D602-4A6A-8354-1C3DF20E116C}
+	EndGlobalSection
+EndGlobal

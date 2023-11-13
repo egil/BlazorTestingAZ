@@ -1,6 +1,6 @@
-﻿using NdcDemo.Data;
+﻿using BlazorTestingAZ.Data;
 
-namespace NdcDemo.Tests;
+namespace BlazorTestingAZ.Tests;
 
 internal class StubWeatherForecastRepo : WeatherForecastRepo
 {

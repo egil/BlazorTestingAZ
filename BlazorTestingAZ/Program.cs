@@ -1,5 +1,5 @@
-using NdcDemo.Components;
-using NdcDemo.Data;
+using BlazorTestingAZ.Components;
+using BlazorTestingAZ.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,3 +28,5 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+public partial class Program { }

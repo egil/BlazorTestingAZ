@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace NdcDemo.Tests;
+namespace BlazorTestingAZ.Tests;
 
 public static class VerifyInit
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using NdcDemo.Data;
+using BlazorTestingAZ.Data;
 
-namespace NdcDemo.Tests.End2EndTesting;
+namespace BlazorTestingAZ.Tests.End2EndTesting;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]

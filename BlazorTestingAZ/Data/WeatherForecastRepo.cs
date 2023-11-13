@@ -1,4 +1,4 @@
-﻿namespace NdcDemo.Data;
+﻿namespace BlazorTestingAZ.Data;
 
 public class WeatherForecastRepo
 {

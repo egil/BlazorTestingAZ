@@ -1,4 +1,4 @@
-﻿namespace NdcDemo.Tests.ComponentTesting;
+﻿namespace BlazorTestingAZ.Tests.ComponentTesting;
 
 public abstract class BunitTestContext : TestContextWrapper
 {

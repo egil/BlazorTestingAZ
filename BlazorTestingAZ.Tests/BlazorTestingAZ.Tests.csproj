@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\NdcDemo\NdcDemo.csproj" />
+		<ProjectReference Include="..\BlazorTestingAZ\BlazorTestingAZ.csproj" />
 	</ItemGroup>
 
 </Project>

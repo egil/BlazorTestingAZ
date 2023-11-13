@@ -1,4 +1,4 @@
-﻿namespace NdcDemo.Tests.End2EndTesting.SnapshotTesting;
+﻿namespace BlazorTestingAZ.Tests.End2EndTesting.SnapshotTesting;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]

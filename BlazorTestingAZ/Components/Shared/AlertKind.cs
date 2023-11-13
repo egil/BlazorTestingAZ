@@ -1,4 +1,4 @@
-﻿namespace NdcDemo.Components.Shared;
+﻿namespace BlazorTestingAZ.Components.Shared;
 
 public enum AlertKind
 {
