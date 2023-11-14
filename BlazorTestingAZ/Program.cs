@@ -29,4 +29,7 @@ app.MapRazorComponents<App>()
 
 app.Run();
 
+// Makes the web app entry point public to
+// allow BlazorApplicationFactory/WebApplicationFactory
+// to reference it.
 public partial class Program { }
