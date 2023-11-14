@@ -11,6 +11,12 @@ internal class CounterPageTest : BlazorPageTest<Program>
         await Page.GotoPreRenderedAsync("counter");
 
         // Act
+        // Finding the element by role makes our tests more resilient
+        // to refactoring since we can change the HTML element used
+        // without breaking the test, as long as the element has the same
+        // role, implicitly or explicitly.
+        // Learn more about this frontend testing strategy
+        // at https://testing-library.com/docs/
         await Page
             .GetByRole(AriaRole.Button, new PageGetByRoleOptions() { Name = "Click me" })
             .ClickAsync();

@@ -31,6 +31,6 @@ internal class CounterPageTraceTest : BlazorPageTest<Program>
         });
 
         // View trace:
-        // .\NdcDemo.Tests\bin\Debug\net8.0\playwright.ps1 show-trace .\NdcDemo.Tests\bin\Debug\net8.0\Count_Increments_WhenButtonIsClicked.trace.zip
+        // .\BlazorTestingAZ.Tests\bin\Debug\net8.0\playwright.ps1 show-trace .\BlazorTestingAZ.Tests\bin\Debug\net8.0\Count_Increments_WhenButtonIsClicked.trace.zip
     }
 }

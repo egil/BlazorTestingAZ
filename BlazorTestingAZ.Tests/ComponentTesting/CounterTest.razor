@@ -5,10 +5,13 @@
     [Test]
     public void Count_Increments_WhenButtonIsClicked()
     {
+        // Arrange
         var cut = Render(@<Counter />);
 
+        // Act
         cut.Find("button").Click();
 
+        // Assert
         var statusText = cut.Find("[role=status]").TextContent;
         Assert.That(statusText, Is.EqualTo("Current count: 1"));
     }

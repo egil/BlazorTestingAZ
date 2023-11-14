@@ -7,6 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazeWright;
 
+/// <summary>
+/// Spins up the Blazor Web App referenced by <typeparamref name="TProgram"/>.
+/// The app is available via <c>127.0.0.1</c> on a random free port chosen at start
+/// up.
+/// </summary>
+/// <typeparam name="TProgram"></typeparam>
 public class BlazorApplicationFactory<TProgram> 
     : WebApplicationFactory<TProgram> where TProgram : class
 {
