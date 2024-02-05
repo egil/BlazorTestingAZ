@@ -19,7 +19,7 @@
         // Assert
         IRenderedComponent<Alert> component = cut.FindComponent<Alert>();
         Alert alert = component.Instance;
-        Assert.True(alert.Dismissed);
+        Assert.That(alert.Dismissed);
     }
 
     // Markup should match this: 
