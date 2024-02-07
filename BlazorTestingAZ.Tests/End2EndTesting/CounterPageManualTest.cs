@@ -12,7 +12,7 @@ internal class CounterPageManualTest
         // Arrange
         // Runs Blazor App referenced by Program, making it
         // available on 127.0.0.1 on a random free port.
-        using BlazorApplicationFactory<Program> host = new BlazorApplicationFactory<Program>();
+        using BlazorApplicationFactory<Program> host = new();
 
         using IPlaywright playwright = await Playwright.CreateAsync();
         await using IBrowser? browser = await playwright.Chromium.LaunchAsync();
@@ -26,7 +26,7 @@ internal class CounterPageManualTest
             // that tests will continue working.
             IgnoreHTTPSErrors = true,
         };
-        
+
         IBrowserContext context = await browser.NewContextAsync(contextOptions);
         IPage page = await context.NewPageAsync();
 

@@ -10,7 +10,7 @@ internal class CounterPageSnapshotTest : BlazorPageTest<Program>
         // Arrange
         await Page.GotoPreRenderedAsync("counter");
 
-        // Verify page content only
+        // Verify page content only semantically
         string html = await Page.ContentAsync();
         await Verify(html, "html");
 

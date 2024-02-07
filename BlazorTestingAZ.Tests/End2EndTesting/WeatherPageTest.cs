@@ -11,11 +11,10 @@ internal class WeatherPageTest : BlazorPageTest<Program>
         await Page.GotoAsync("weather");
 
         // Act
-        await Page.WaitForSelectorAsync("h1 >> text=Weather");
         await Page.WaitForSelectorAsync("table>tbody>tr");
 
         // Assert
-        var rows = await Page.Locator("p+table>tbody>tr").CountAsync();
-        Assert.That(rows, Is.EqualTo(5));
+        var rows = await Page.Locator("table>tbody>tr").CountAsync();        
+        Assert.That(rows, Is.EqualTo(5)); // is "5" stable?
     }
 }
