@@ -27,7 +27,7 @@ internal class WeatherPageServicesReplacedTest : BlazorPageTest<Program>
         await Page.GotoAsync("weather");
 
         // Act
-        await Page.WaitForSelectorAsync("table>tbody>tr");
+        await Page.WaitForSelectorAsync("table");
 
         // Assert
         var rows = await Page.Locator("table>tbody>tr").CountAsync();

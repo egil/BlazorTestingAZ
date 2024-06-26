@@ -10,17 +10,17 @@ internal class CounterPageSnapshotTest : BlazorPageTest<Program>
         // Arrange
         await Page.GotoPreRenderedAsync("counter");
 
-        // Verify page content only semantically
-        string html = await Page.ContentAsync();
-        await Verify(html, "html");
+        // Verify page content only,
+        // using semantic comparison
+        IElementHandle? bodyElement = await Page.QuerySelectorAsync("body");
+        string bodyHtml = await bodyElement!.InnerHTMLAsync();
+        await Verify(bodyHtml, "html");
 
-        // Verify page and create screenshot
+        // Verify by comparing a screenshot to the rendered page
         //await Verify(Page).PageScreenshotOptions(new()
         //{
         //    Quality = 50,
         //    Type = ScreenshotType.Jpeg
         //});
     }
-
-    // Run diffenginetray to manage diffs
 }

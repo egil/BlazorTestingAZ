@@ -8,6 +8,8 @@ internal class CounterPageTest : BlazorPageTest<Program>
     public async Task Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
+        // Tip: create reusable Goto methods that incapsulate cross cutting concerns,
+        // e.g. GotoPageAsUser(url, userName)
         await Page.GotoPreRenderedAsync("counter");
 
         // Act

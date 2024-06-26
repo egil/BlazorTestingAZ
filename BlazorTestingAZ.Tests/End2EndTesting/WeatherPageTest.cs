@@ -11,7 +11,8 @@ internal class WeatherPageTest : BlazorPageTest<Program>
         await Page.GotoAsync("weather");
 
         // Act
-        await Page.WaitForSelectorAsync("table>tbody>tr");
+        // Uses WaitFor selector to poll DOM until weather data loads
+        await Page.WaitForSelectorAsync("table");
 
         // Assert
         var rows = await Page.Locator("table>tbody>tr").CountAsync();        

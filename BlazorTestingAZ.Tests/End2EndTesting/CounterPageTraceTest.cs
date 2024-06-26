@@ -8,6 +8,7 @@ internal class CounterPageTraceTest : BlazorPageTest<Program>
     public async Task Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
+        // Explicitly enable tracing during development
         await Context.Tracing.StartAsync(new()
         {
             Screenshots = true,
@@ -25,6 +26,7 @@ internal class CounterPageTraceTest : BlazorPageTest<Program>
         ILocator status = Page.GetByRole(AriaRole.Status);
         await Expect(status).ToHaveTextAsync("Current count: 1");
 
+        // Stop tracing and write result to zip file
         await Context.Tracing.StopAsync(new()
         {
             Path = nameof(Count_Increments_WhenButtonIsClicked) + ".trace.zip"

@@ -6,13 +6,13 @@
     {
         // Arrange
         using var ctx = new Bunit.TestContext();
-        var cut = ctx.Render(@<Counter />);
+        IRenderedFragment cut = ctx.Render(@<Counter />);
 
         // Act
         cut.Find("button").Click();
 
         // Assert
-        var statusText = cut.Find("[role=status]").TextContent;
-        Assert.That(statusText, Is.EqualTo("Current count: 1"));
+        string statusText = cut.Find("[role=status]").TextContent;
+        statusText.MarkupMatches("Current count: 1");
     }
 }

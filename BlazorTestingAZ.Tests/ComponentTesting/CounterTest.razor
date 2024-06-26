@@ -6,15 +6,15 @@
     public void Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
-        var cut = Render(@<Counter />);
+        IRenderedFragment cut = Render(@<Counter />);
 
         // Act
-        // Role based lookup coming to bUnit soon. Actively 
-        // worked on by Scott Sauber
+        // Role based lookup planned. 
+        // "By label text" already available.
         cut.Find("button").Click();
 
         // Assert
-        var statusText = cut.Find("[role=status]").TextContent;
-        Assert.That(statusText, Is.EqualTo("Current count: 1"));
+        string statusText = cut.Find("[role=status]").TextContent;
+        statusText.MarkupMatches("Current count: 1");
     }
 }

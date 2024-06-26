@@ -12,7 +12,7 @@ internal class CounterPageManualTest
         // Arrange
         // Runs Blazor App referenced by Program, making it
         // available on 127.0.0.1 on a random free port.
-        using BlazorApplicationFactory<Program> host = new();
+        using var host = new BlazorApplicationFactory<Program>();
 
         using IPlaywright playwright = await Playwright.CreateAsync();
         await using IBrowser? browser = await playwright.Chromium.LaunchAsync();
@@ -34,7 +34,12 @@ internal class CounterPageManualTest
         // This is needed when pre-rendering is enabled and using Blazor Server,
         // since the page is not interactive until the SignalR connection to the
         // backend has been established.
-        await page.GotoAsync("counter", new() { WaitUntil = WaitUntilState.NetworkIdle });
+        await page.GotoAsync(
+            "counter",
+            new PageGotoOptions()
+            {
+                WaitUntil = WaitUntilState.NetworkIdle
+            });
 
         // Act
         await page

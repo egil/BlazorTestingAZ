@@ -1,3 +1,4 @@
+@using AngleSharp.Dom
 @attribute [TestFixture]
 @inherits BunitTestContext
 @code {
@@ -9,10 +10,10 @@
         Services.AddSingleton<WeatherForecastRepo>(
             new StubWeatherForecastRepo(forecastsToReturn: 2));
 
-        var cut = Render(@<Weather />);
+        IRenderedFragment cut = Render(@<Weather />);
 
         // Act
-        var rows = cut.WaitForElements("tbody > tr");
+        IReadOnlyList<IElement> rows = cut.WaitForElements("tbody > tr");
 
         // Assert
         Assert.That(rows.Count, Is.EqualTo(2));

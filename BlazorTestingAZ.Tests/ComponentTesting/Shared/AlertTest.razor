@@ -6,7 +6,7 @@
     public void Alert_dismiss()
     {
         // Arrange
-        var cut = Render(
+        IRenderedFragment cut = Render(
             @<Alert 
                 Kind="AlertKind.Primary" 
                 Dismissible="true">
@@ -18,7 +18,9 @@
 
         // Assert
         IRenderedComponent<Alert> component = cut.FindComponent<Alert>();
+        // Access the component instance directly
         Alert alert = component.Instance;
+        // Assert against the components state
         Assert.That(alert.Dismissed);
     }
 
@@ -64,7 +66,7 @@
     public Task Alert_markup(AlertKind kind, bool dismissible)
     {
         // Arrange & act
-        var cut = Render(
+        IRenderedFragment cut = Render(
             @<Alert Kind="kind" Dismissible="dismissible">
                 <p>CONTENT</p>
             </Alert>);
