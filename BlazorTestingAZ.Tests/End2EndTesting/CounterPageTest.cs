@@ -1,16 +1,14 @@
 namespace BlazorTestingAZ.Tests.End2EndTesting;
 
-[Parallelizable(ParallelScope.Self)]
-[TestFixture]
-internal class CounterPageTest : BlazorPageTest<Program>
+public class CounterPageTest : BlazorPageTest<Program>
 {
-    [Test]
+    [Fact]
     public async Task Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
         // Tip: create reusable Goto methods that incapsulate cross cutting concerns,
         // e.g. GotoPageAsUser(url, userName)
-        await Page.GotoPreRenderedAsync("counter");
+        await Page.GotoBlazorServerPageAsync("counter");
 
         // Act
         // Finding the element by role makes our tests more resilient

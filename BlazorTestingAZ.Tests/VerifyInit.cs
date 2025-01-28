@@ -18,3 +18,9 @@ public static class VerifyInit
     }
 }
 
+public class VerifyInitTest
+{
+    [Fact]
+    public static Task Run() =>
+        VerifyChecks.Run();
+}

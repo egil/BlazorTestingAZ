@@ -1,36 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<LangVersion>preview</LangVersion>
 		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
+	
+	<ItemGroup>
+		<Using Include="Xunit" />
+	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="bunit" Version="1.28.9" />
-		<PackageReference Include="Verify.Bunit" Version="11.0.0" />
-		<PackageReference Include="Verify.Playwright" Version="2.3.0" />
-		<PackageReference Include="Verify.AngleSharp" Version="4.3.1" />
-		<PackageReference Include="Verify.ClipboardAccept" Version="25.0.3" />
-		<PackageReference Include="Verify.NUnit" Version="23.1.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.1" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-		<PackageReference Include="Microsoft.Playwright" Version="1.41.2" />
-		<PackageReference Include="Microsoft.Playwright.NUnit" Version="1.41.2" />
-		<PackageReference Include="NUnit" Version="4.0.1" />
-		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-		<PackageReference Include="NUnit.Analyzers" Version="4.0.1">
+		<PackageReference Include="bunit" Version="1.38.5" />
+		<PackageReference Include="Verify.Xunit" Version="28.9.0" />
+		<PackageReference Include="Verify.Bunit" Version="12.0.0" />
+		<PackageReference Include="Verify.Playwright" Version="3.0.0" />
+		<PackageReference Include="Verify.AngleSharp" Version="4.5.0" />
+		<PackageReference Include="Verify.ClipboardAccept" Version="28.9.0" />
+		<PackageReference Include="Microsoft.Playwright.Xunit" Version="1.50.0-beta-2" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.1" />
+		<PackageReference Include="coverlet.collector" Version="6.0.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+		<PackageReference Include="xunit" Version="2.9.3" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.1">
 			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="coverlet.collector" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\BlazorTestingAZ\BlazorTestingAZ.csproj" />
 	</ItemGroup>
+
+	<!--
+	Automatically copied when Sdk="Microsoft.NET.Sdk.Razor" 
+	<ItemGroup>
+		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	-->
 
 </Project>

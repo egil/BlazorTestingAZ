@@ -2,17 +2,16 @@ using static Microsoft.Playwright.Assertions;
 
 namespace BlazorTestingAZ.Tests.End2EndTesting;
 
-[Parallelizable(ParallelScope.Self)]
-[TestFixture]
-internal class CounterPageManualTest
+public class CounterPageManualTest
 {
-    [Test]
+    [Fact]
     public async Task Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
         // Runs Blazor App referenced by Program, making it
         // available on 127.0.0.1 on a random free port.
-        using var host = new BlazorApplicationFactory<Program>();
+        await using var host = new BlazorApplicationFactory<Program>();
+        await host.InitializeAsync();
 
         using IPlaywright playwright = await Playwright.CreateAsync();
         await using IBrowser? browser = await playwright.Chromium.LaunchAsync();

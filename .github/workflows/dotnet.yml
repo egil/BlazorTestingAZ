@@ -26,9 +26,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+  
     - uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 9.0.x
+        
     - run: dotnet tool install --global Microsoft.Playwright.CLI
     - run: dotnet build -c Release
     - run: playwright install chromium
@@ -45,7 +47,7 @@ jobs:
         name: playwright-traces
         if-no-files-found: ignore
         retention-days: 3
-        path: ./NdcDemo.Tests/bin/Release/net8.0/*.trace.zip
+        path: ./BlazorTestingAZ.Tests/bin/Release/net9.0/*.trace.zip
 
     - name: upload snapshot files
       uses: actions/upload-artifact@v3
@@ -54,7 +56,7 @@ jobs:
         name: snapshots
         if-no-files-found: ignore
         retention-days: 3
-        path: ./NdcDemo.Tests/**/*.received.*
+        path: ./BlazorTestingAZ.Tests/**/*.received.*
 
     - name: update test results
       uses: actions/upload-artifact@v3

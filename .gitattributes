@@ -3,6 +3,10 @@
 ###############################################################################
 * text=auto
 
+# Verify
+*.verified.html text eol=lf working-tree-encoding=UTF-8
+*.verified.txt text eol=lf working-tree-encoding=UTF-8
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
