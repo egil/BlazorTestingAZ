@@ -14,13 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTestingAZ", "BlazorTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTestingAZ.Tests", "BlazorTestingAZ.Tests\BlazorTestingAZ.Tests.csproj", "{81574864-80C4-492B-B04C-4EFB9F996CE1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{1C00FCDF-9098-45D3-9FBE-C62B267FA5E6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{76F70F24-8945-414C-9F04-9CD57647927C}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +31,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{76F70F24-8945-414C-9F04-9CD57647927C} = {1C00FCDF-9098-45D3-9FBE-C62B267FA5E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {523BE179-D602-4A6A-8354-1C3DF20E116C}
