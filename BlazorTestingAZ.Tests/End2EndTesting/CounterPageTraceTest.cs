@@ -1,10 +1,8 @@
 namespace BlazorTestingAZ.Tests.End2EndTesting;
 
-[Parallelizable(ParallelScope.Self)]
-[TestFixture]
-internal class CounterPageTraceTest : BlazorPageTest<Program>
+public class CounterPageTraceTest : BlazorPageTest<Program>
 {
-    [Test]
+    [Fact]
     public async Task Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
@@ -17,7 +15,7 @@ internal class CounterPageTraceTest : BlazorPageTest<Program>
         });
 
         // Act
-        await Page.GotoPreRenderedAsync("counter");
+        await Page.GotoBlazorServerPageAsync("counter");
         await Page
             .GetByRole(AriaRole.Button, new PageGetByRoleOptions() { Name = "Click me" })
             .ClickAsync();
@@ -33,6 +31,6 @@ internal class CounterPageTraceTest : BlazorPageTest<Program>
         });
 
         // View trace:
-        // .\BlazorTestingAZ.Tests\bin\Debug\net8.0\playwright.ps1 show-trace .\BlazorTestingAZ.Tests\bin\Debug\net8.0\Count_Increments_WhenButtonIsClicked.trace.zip
+        // .\BlazorTestingAZ.Tests\bin\Debug\net9.0\playwright.ps1 show-trace .\BlazorTestingAZ.Tests\bin\Debug\net9.0\Count_Increments_WhenButtonIsClicked.trace.zip
     }
 }

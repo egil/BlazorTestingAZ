@@ -1,11 +1,9 @@
-@attribute [TestFixture]
 @code {
-
-    [Test]
+    [Fact]
     public void Count_Increments_WhenButtonIsClicked()
     {
         // Arrange
-        using var ctx = new Bunit.TestContext();
+        using var ctx = new TestContext();
         IRenderedFragment cut = ctx.Render(@<Counter />);
 
         // Act

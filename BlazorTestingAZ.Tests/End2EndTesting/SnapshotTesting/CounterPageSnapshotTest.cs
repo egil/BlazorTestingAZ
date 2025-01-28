@@ -1,14 +1,12 @@
 ﻿namespace BlazorTestingAZ.Tests.End2EndTesting.SnapshotTesting;
 
-[Parallelizable(ParallelScope.Self)]
-[TestFixture]
-internal class CounterPageSnapshotTest : BlazorPageTest<Program>
+public class CounterPageSnapshotTest : BlazorPageTest<Program>
 {
-    [Test]
+    [Fact]
     public async Task Counter_page()
     {
         // Arrange
-        await Page.GotoPreRenderedAsync("counter");
+        await Page.GotoBlazorServerPageAsync("counter");
 
         // Verify page content only,
         // using semantic comparison

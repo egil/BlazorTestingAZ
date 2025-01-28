@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Playwright.NUnit;
+using Microsoft.Playwright.Xunit;
 
 namespace BlazeWright;
 
@@ -7,19 +7,14 @@ public class BlazorPageTest<TProgram> : BrowserTest
     where TProgram : class
 {
     private BlazorApplicationFactory<TProgram>? host;
+    private IPage? page;
+    private IBrowserContext? context;
 
-    public IBrowserContext Context { get; private set; } = null!;
+    public IBrowserContext Context => context ?? throw new InvalidOperationException("Setup has not been run.");
 
-    public IPage Page { get; private set; } = null!;
+    public IPage Page => page ?? throw new InvalidOperationException("Setup has not been run.");
 
-    public BlazorApplicationFactory<TProgram> Host
-    {
-        get
-        {
-            host ??= CreateHostFactory() ?? new BlazorApplicationFactory<TProgram>(ConfigureWebHost);
-            return host;
-        }
-    }
+    public BlazorApplicationFactory<TProgram> Host => host ?? throw new InvalidOperationException("Setup has not been run.");
 
     public virtual BlazorApplicationFactory<TProgram> CreateHostFactory()
         => new BlazorApplicationFactory<TProgram>(ConfigureWebHost);
@@ -28,29 +23,36 @@ public class BlazorPageTest<TProgram> : BrowserTest
 
     protected virtual void ConfigureWebHost(IWebHostBuilder builder) { }
 
-    [SetUp]
-    public async Task PageSetup()
+    public override async Task InitializeAsync()
     {
+        host = new BlazorApplicationFactory<TProgram>(ConfigureWebHost);
+        await host.InitializeAsync();
+        await base.InitializeAsync();
+
         var options = ContextOptions() ?? new BrowserNewContextOptions();
         options.BaseURL = Host.ServerAddress;
         options.IgnoreHTTPSErrors = true;
 
-        Context = await NewContext(options).ConfigureAwait(false);
-        Page = await Context.NewPageAsync().ConfigureAwait(false);
+        context = await NewContext(options);
+        page = await Context.NewPageAsync();
     }
 
-    [TearDown]
-    public async Task HostTearDown()
+    public override async Task DisposeAsync()
     {
-        if (host is { } currentHost)
+        if (page is not null)
         {
-            host = null;
+            await page.CloseAsync();
+        }
 
-            // Navigate to about:blank to ensure any SignalR
-            // connections are dropped.
-            //await Page.GotoAsync("about:blank");
-            await Context.DisposeAsync().ConfigureAwait(false);
-            await currentHost.DisposeAsync().ConfigureAwait(false);
+        if (context is not null)
+        {
+            await context.DisposeAsync();
+        }
+
+        if (host is not null)
+        {
+            await host.DisposeAsync();
+            host = null;
         }
     }
 }

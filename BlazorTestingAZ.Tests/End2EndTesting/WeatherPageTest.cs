@@ -1,10 +1,8 @@
 ﻿namespace BlazorTestingAZ.Tests.End2EndTesting;
 
-[TestFixture]
-[Parallelizable(ParallelScope.Self)]
-internal class WeatherPageTest : BlazorPageTest<Program>
+public class WeatherPageTest : BlazorPageTest<Program>
 {
-    [Test]
+    [Fact]
     public async Task WeatherForecastTable_LoadsAndDisplaysData_OnPageInitialization()
     {
         // Arrange
@@ -16,6 +14,6 @@ internal class WeatherPageTest : BlazorPageTest<Program>
 
         // Assert
         var rows = await Page.Locator("table>tbody>tr").CountAsync();        
-        Assert.That(rows, Is.EqualTo(5)); // is "5" stable?
+        Assert.Equal(5, rows); // is "5" stable?
     }
 }

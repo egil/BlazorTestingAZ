@@ -1,9 +1,9 @@
 @using AngleSharp.Dom
-@attribute [TestFixture]
-@inherits BunitTestContext
+@using BlazorTestingAZ.Tests
+@inherits TestContext
 @code {
 
-    [Test]
+    [Fact]
     public void WeatherForecastTable_LoadsAndDisplaysData_OnPageInitialization()
     {
         // Arrange
@@ -16,6 +16,6 @@
         IReadOnlyList<IElement> rows = cut.WaitForElements("tbody > tr");
 
         // Assert
-        Assert.That(rows.Count, Is.EqualTo(2));
+        Assert.Equal(2, rows.Count);
     }
 }

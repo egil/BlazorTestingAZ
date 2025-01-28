@@ -1,8 +1,6 @@
-@attribute [TestFixture]
-@inherits BunitTestContext
+@inherits TestContext
 @code {
-
-    [Test]
+    [Fact]
     public void Alert_dismiss()
     {
         // Arrange
@@ -18,15 +16,17 @@
 
         // Assert
         IRenderedComponent<Alert> component = cut.FindComponent<Alert>();
+        
         // Access the component instance directly
         Alert alert = component.Instance;
+
         // Assert against the components state
-        Assert.That(alert.Dismissed);
+        Assert.True(alert.Dismissed);
     }
 
     // Markup should match this: 
     // https://getbootstrap.com/docs/5.3/components/alerts/#dismissing
-    [Test]
+    [Fact]
     public void Alert_correct_markup_with_dismissal()
     {
         // Arrange
@@ -45,24 +45,25 @@
             </div>);
     }
 
-    [TestCase(AlertKind.None, true)]
-    [TestCase(AlertKind.Primary, true)]
-    [TestCase(AlertKind.Secondary, true)]
-    [TestCase(AlertKind.Success, true)]
-    [TestCase(AlertKind.Danger, true)]
-    [TestCase(AlertKind.Warning, true)]
-    [TestCase(AlertKind.Info, true)]
-    [TestCase(AlertKind.Light, true)]
-    [TestCase(AlertKind.Dark, true)]
-    [TestCase(AlertKind.None, false)]
-    [TestCase(AlertKind.Primary, false)]
-    [TestCase(AlertKind.Secondary, false)]
-    [TestCase(AlertKind.Success, false)]
-    [TestCase(AlertKind.Danger, false)]
-    [TestCase(AlertKind.Warning, false)]
-    [TestCase(AlertKind.Info, false)]
-    [TestCase(AlertKind.Light, false)]
-    [TestCase(AlertKind.Dark, false)]
+    [InlineData(AlertKind.None, true)]
+    [InlineData(AlertKind.Primary, true)]
+    [InlineData(AlertKind.Secondary, true)]
+    [InlineData(AlertKind.Success, true)]
+    [InlineData(AlertKind.Danger, true)]
+    [InlineData(AlertKind.Warning, true)]
+    [InlineData(AlertKind.Info, true)]
+    [InlineData(AlertKind.Light, true)]
+    [InlineData(AlertKind.Dark, true)]
+    [InlineData(AlertKind.None, false)]
+    [InlineData(AlertKind.Primary, false)]
+    [InlineData(AlertKind.Secondary, false)]
+    [InlineData(AlertKind.Success, false)]
+    [InlineData(AlertKind.Danger, false)]
+    [InlineData(AlertKind.Warning, false)]
+    [InlineData(AlertKind.Info, false)]
+    [InlineData(AlertKind.Light, false)]
+    [InlineData(AlertKind.Dark, false)]
+    [Theory]
     public Task Alert_markup(AlertKind kind, bool dismissible)
     {
         // Arrange & act
@@ -72,6 +73,6 @@
             </Alert>);
         
         // Assert
-        return Verify(cut);
+        return Verify(cut).UseParameters(kind, dismissible);
     }
 }
