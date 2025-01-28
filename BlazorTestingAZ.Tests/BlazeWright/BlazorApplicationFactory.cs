@@ -60,6 +60,8 @@ public sealed class BlazorApplicationFactory<TProgram>(Action<IWebHostBuilder>? 
 
         host = builder.Build();
 
+        // Hack: return dummy host so that the TProgram
+        // project is not started twice.
         return new DummyHost();
     }
 
