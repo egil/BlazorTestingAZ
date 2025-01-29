@@ -9,7 +9,7 @@ public class CounterPageSnapshotTest : BlazorPageTest<Program>
         await Page.GotoBlazorServerPageAsync("counter");
 
         // Get part of the page to snapshot
-        var main = Page.GetByRole(AriaRole.Main);
+        ILocator main = Page.GetByRole(AriaRole.Main);
         string mainHtml = await main.InnerHTMLAsync();
 
         // Verify page content only, using semantic comparison

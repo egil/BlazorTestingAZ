@@ -73,6 +73,7 @@
             </Alert>);
         
         // Assert
-        return Verify(cut).UseParameters(kind, dismissible);
+        return Verify(cut)
+            .UseParameters(kind, dismissible);
     }
 }

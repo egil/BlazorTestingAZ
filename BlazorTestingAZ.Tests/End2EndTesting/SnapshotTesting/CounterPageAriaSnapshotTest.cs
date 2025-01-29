@@ -14,7 +14,8 @@ public class CounterPageAriaSnapshotTest : BlazorPageTest<Program>
             .ClickAsync();
 
         // Assert
-        await Expect(Page.GetByRole(AriaRole.Main)).ToMatchAriaSnapshotAsync("""
+        ILocator main = Page.GetByRole(AriaRole.Main);
+        await Expect(main).ToMatchAriaSnapshotAsync("""
             - main:
                 - heading "Counter" [level=1]
                 - status: "Current count: 1"
