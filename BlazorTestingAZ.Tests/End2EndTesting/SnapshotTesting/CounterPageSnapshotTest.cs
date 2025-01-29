@@ -8,11 +8,12 @@ public class CounterPageSnapshotTest : BlazorPageTest<Program>
         // Arrange
         await Page.GotoBlazorServerPageAsync("counter");
 
-        // Verify page content only,
-        // using semantic comparison
-        IElementHandle? bodyElement = await Page.QuerySelectorAsync("body");
-        string bodyHtml = await bodyElement!.InnerHTMLAsync();
-        await Verify(bodyHtml, "html");
+        // Get part of the page to snapshot
+        var main = Page.GetByRole(AriaRole.Main);
+        string mainHtml = await main.InnerHTMLAsync();
+
+        // Verify page content only, using semantic comparison
+        await Verify(mainHtml, "html");
 
         // Verify by comparing a screenshot to the rendered page
         //await Verify(Page).PageScreenshotOptions(new()
