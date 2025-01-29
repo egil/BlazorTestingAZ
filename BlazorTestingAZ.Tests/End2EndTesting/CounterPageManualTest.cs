@@ -11,7 +11,7 @@ public class CounterPageManualTest
         // Runs Blazor App referenced by Program, making it
         // available on 127.0.0.1 on a random free port.
         await using var host = new BlazorApplicationFactory<Program>();
-        await host.InitializeAsync();
+        await host.StartAsync();
 
         using IPlaywright playwright = await Playwright.CreateAsync();
         await using IBrowser? browser = await playwright.Chromium.LaunchAsync();
@@ -20,6 +20,7 @@ public class CounterPageManualTest
             // Assigns the base address of the host
             // (cannot be hardcoded due to random chosen port)
             BaseURL = host.ServerAddress,
+
             // BAF/WAF uses dotnet dev-cert for HTTPS. If
             // that is not trusted on your CI pipeline, this ensures
             // that tests will continue working.

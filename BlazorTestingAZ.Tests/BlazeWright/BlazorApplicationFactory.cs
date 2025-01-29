@@ -11,30 +11,30 @@ namespace BlazeWright;
 
 /// <summary>
 /// Spins up the Blazor Web App referenced by <typeparamref name="TProgram"/>.
-/// The app is available via <c>127.0.0.1</c> on a random free port chosen at start
-/// up.
+/// The app is available via <c>127.0.0.1</c> on a random free port chosen at start up.
 /// </summary>
-/// <typeparam name="TProgram"></typeparam>
-public sealed class BlazorApplicationFactory<TProgram>(Action<IWebHostBuilder>? configureWebHost = null) : WebApplicationFactory<TProgram>
+public sealed class BlazorApplicationFactory<TProgram>(
+    Action<IWebHostBuilder>? configureWebHost = null) : WebApplicationFactory<TProgram>
     where TProgram : class
 {
     private IHost? host;
 
-    public override IServiceProvider Services 
-        => host?.Services 
-        ?? throw new InvalidOperationException("Call InitializeAsync() first to start host.");
+    public override IServiceProvider Services
+        => host?.Services
+        ?? throw new InvalidOperationException("Call StartAsync() first to start host.");
 
     public string ServerAddress => host is not null
         ? ClientOptions.BaseAddress.ToString()
-        : throw new InvalidOperationException("Call InitializeAsync() first to start host.");
+        : throw new InvalidOperationException("Call StartAsync() first to start host.");
 
-    public async Task InitializeAsync()
+    public async Task StartAsync()
     {
-        // Triggers host start up.
+        // Triggers CreateHost() getting called.
         _ = base.Services;
 
         Debug.Assert(host is not null);
 
+        // Spins the host app up.
         await host.StartAsync();
 
         // Extract the selected dynamic port out of the Kestrel server

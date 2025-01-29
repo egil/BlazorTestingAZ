@@ -26,7 +26,7 @@ public class BlazorPageTest<TProgram> : BrowserTest
     public override async Task InitializeAsync()
     {
         host = new BlazorApplicationFactory<TProgram>(ConfigureWebHost);
-        await host.InitializeAsync();
+        await host.StartAsync();
         await base.InitializeAsync();
 
         var options = ContextOptions() ?? new BrowserNewContextOptions();
